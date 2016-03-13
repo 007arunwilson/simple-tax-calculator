@@ -1,0 +1,35 @@
+/** Custom Styles**/
+body { color: #002536; 
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#2989d8+0,7db9e8+97 */
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#c9d0d6+0,ffffff+27 */
+background: #c9d0d6; /* Old browsers */
+background: -moz-linear-gradient(top, #c9d0d6 0%, #ffffff 27%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#c9d0d6), color-stop(27%,#ffffff)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, #c9d0d6 0%,#ffffff 27%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, #c9d0d6 0%,#ffffff 27%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top, #c9d0d6 0%,#ffffff 27%); /* IE10+ */
+background: linear-gradient(to bottom, #c9d0d6 0%,#ffffff 27%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c9d0d6', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */er: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2989d8', endColorstr='#7db9e8',GradientType=0 ); /* IE6-9 */
+
+}
+.main-table { margin-bottom: 100px; }
+.top-details { text-align: center; }
+.top-table { display:inline-table; }
+.top-table td { text-align: left; padding: 5px; }
+.top-table .pan-input { text-transform: uppercase; }
+.top-row td { padding-top: 30px !important; }
+.sub-label { padding-left: 5% !important; font-size: 90%; }
+.value-final { background-color:#ffc !important; }
+.value-entry, .value-display, .value-final { text-align: center; }
+.net-tax-payable .value-final { font-size: 28px; background-color:#fff !important;  }
+.tax-to-income-ratio .value-final { font-size: 28px;background-color:#fff !important; }
+.print-display { display: none; }
+
+@media print {
+
+a[href]:after { display:none; }
+
+@page { size: landscape; margin: 6mm; }
+.print-hide { display: none !important; }
+.print-display{ display: block; }
+}

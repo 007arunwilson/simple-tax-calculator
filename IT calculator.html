@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Income Tax Calculator</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="tax.png">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/jquery-ui.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/jquery-2.1.4.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery-ui.js"></script>
+  <script src="js/script.js"></script>
+</head>
+<body>
+  
+<div class="container">
+  <img src="home.jpg">
+  <h1>Income tax calculator <small>Version 1.0</small></h1>
+<!--   <p class="print-hide"><small>For assistance please contact the developer on :  cyberinfoscripter@gmail.com / arunwilson@yandex.com</small></p> -->
+
+  <hr>
+
+  <table class="table table-condensed main-table table-bordered">
+    <thead>
+      <tr>
+        <th class="top-details" colspan="4">
+    		
+        <table class="top-table">
+
+        <tr><td>Name</td><td>:</td><td><input maxlength="24" class="form-control" type="text"></td></tr>
+        <tr><td>PAN number</td><td>:</td><td><input maxlength="24" class="form-control pan-input" type="text"></td></tr>
+        <tr><td>Birthdate</td><td>:</td><td>
+        	
+			<input type="text" id="datepicker" class="form-control" />
+
+        </td></tr>
+
+        </table>
+
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+
+
+      <tr class="top-row gross-annual-income">
+      	<td class="head-label">Gross Annual Income/Salary (with all allowances)</td>
+        <td>
+          <input type="text" class="form-control input-sm value-entry" data-value="">
+        </td>
+        <td>
+        </td>
+        <td>
+          <input readonly="readonly" type="text" class="form-control input-sm value-final" data-value="">
+        </td>
+      </tr>
+
+
+      <tr class="less-allowances">
+        <td class="head-label">Less: Allowances exempt u/s 10(for Service Period)</td>
+        <td>
+        </td>
+        <td>
+        </td>
+        <td>
+          <input readonly="readonly" type="text" class="form-control input-sm value-final" data-value="">
+        </td>
+      </tr>
+
+      <tr class="hra-exemption">
+        <td class="head-label">(I) H.R.A. exemption</td>
+        <td>
+        </td>
+        <td>
+          <input readonly="readonly" type="text" class="form-control input-sm value-display" data-value="">
+        </td>
+        <td>
+        </td>
+      </tr>
+
+      <tr class="hra-exemption-cor">
+        <td class="sub-label">City of Residence</td>
+        <td>
+        </td>
+        <td>
+          <select class="form-control input-sm value-entry">
+          <option>Metro</option>
+          <option selected >Non-Metro</option>
+          </select>
+        </td>
+        <td>
+        </td>
+      </tr>
+
+      <tr class="hra-exemption-bs">
+        <td class="sub-label">Basic Salary</td>
+        <td>
+            <input type="text" class="form-control input-sm value-entry" data-value="">
+        </td>
+        <td>
+            <input readonly="readonly" type="text" class="form-control input-sm value-display" data-value="">
+        </td>
+        <td>
+        </td>
+      </tr>
+
+      <tr class="hra-exemption-rp">
+        <td class="sub-label">Rent Paid</td>
+        <td>
+            <input type="text" class="form-control input-sm value-entry" data-value="">
+        </td>
+        <td>
+            <input readonly="readonly" type="text" class="form-control input-sm value-display" data-value="">
+        </td>
+        <td>
+        </td>
+      </tr>
+
+      <tr class="hra-exemption-hrar">
+        <td class="sub-label">HRA Recieved</td>
+        <td>
+            <input type="text" class="form-control input-sm value-entry" data-value="">
+        </td>
+        <td>
+            <input readonly="readonly" type="text" class="form-control input-sm value-display" data-value="">
+        </td>
+        <td>
+        </td>
+      </tr>
+
+
+      <tr class="conveyance-allowances">
+        <td class="head-label">(II) Conveyance allowances(Max Rs.1600/-p.m)</td>
+        <td>
+          <input type="text" class="form-control input-sm value-entry" data-value="">
+        </td>
+        <td>
+          <input readonly="readonly" type="text" class="form-control input-sm value-display" data-value="">
+        </td>
+        <td>
+        </td>
+      </tr>
+
+      <tr class="anyother-allowances">
+        <td class="head-label">(III) Any Other Exempted Receipts/ allowances</td>
+        <td>
+          <input type="text" class="form-control input-sm value-entry" data-value="">
+        </td>
+        <td>
+          <input readonly="readonly" type="text" class="form-control input-sm value-display" data-value="">
+        </td>
+        <td>
+        </td>
+      </tr>
+
+      <tr class="professional-tax">
+        <td class="head-label">(IV) Professional Tax</td>
+        <td>
+          <input type="text" class="form-control input-sm value-entry" data-value="">
+        </td>
+        <td>
+          <input readonly="readonly" type="text" class="form-control input-sm value-display" data-value="">
+        </td>
+        <td>
+        </td>
+      </tr>
+
+      <tr class="income-under">
+        <td class="head-label">Income under the head salaries</td>
+        <td>
+        </td>
+        <td>
+        </td>
+        <td>
+          <input readonly="readonly" type="text" class="form-control input-sm value-final" data-value="">
+        </td>
+      </tr>
+
+      <tr class="add-other-income">
+        <td class="head-label">Add: Any other income from other sources</td>
+        <td>
+        </td>
+        <td>
+            <input readonly="readonly" type="text" class="form-control input-sm value-display" data-value="">
+        </td>
+        <td>
+          <input readonly="readonly" type="text" class="form-control input-sm value-final" data-value="">
+        </td>
+      </tr>
+
+      <tr class="interest-received">
+        <td class="head-label">1. Interest received from following Investments</td>
+        <td>
+        </td>
+        <td>
+        </td>
+        <td>
+        </td>
+      </tr>
+
+      <tr class="a-bank-saving">
+        <td class="sub-label">a. Bank ( Saving /FD /Rec )</td>
+        <td>
+          <input type="text" class="form-control input-sm value-entry" data-value="">
+        </td>
+        <td>
+        </td>
+        <td>
+        </td>
+      </tr>
+
+      <tr class="b-nsc-accured">
+        <td class="sub-label">b. N.S.C.(accrued/ Recd )</td>
+        <td>
+            <input type="text" class="form-control input-sm value-entry" data-value="">
+        </td>
+        <td>
+        </td>
+        <td>
+        </td>
+      </tr>
+
+
+      <tr class="c-post-office">
+        <td class="sub-label">c. Post Ofice M.I.S (6 yrs.)</td>
+        <td>
+          <input type="text" class="form-control input-sm value-entry" data-value="">
+        </td>
+        <td>
+        </td>
+        <td>
+        </td>
+      </tr>
+
+      <tr class="d-post-office">
+        <td class="sub-label">d. Post Office Recring Deposit (5 yrs.)</td>
+        <td>
+            <input type="text" class="form-control input-sm value-entry" data-value="">
+        </td>
+        <td>
+        </td>
+        <td>
+        </td>
+      </tr>
+
+      <tr class="other-income-2">
+        <td class="head-label">2. Any Other Income</td>
+        <td>
+          <input type="text" class="form-control input-sm value-entry" data-value="">
+        </td>
+        <td>
+        </td>
+        <td>
+        </td>
+      </tr>
+
+      <tr class="other-income-3">
+        <td class="head-label">3. Any Other Income</td>
+        <td>
+          <input type="text" class="form-control input-sm value-entry" data-value="">
+        </td>
+        <td>
+        </td>
+        <td>
+        </td>
+      </tr>
+
+      <tr class="less-exemption-homeloan">
+        <td class="head-label">Less: Exemption on Home Loan Interest (Sec 24)</td>
+        <td>
+        </td>
+        <td>
+
+        </td>
+        <td>
+          <input readonly="readonly" type="text" class="form-control input-sm value-final" data-value="">
+        </td>
+      </tr>
+
+      <tr class="income-house-property">
+        <td class="sub-label">Income from house property (Section 24)</td>
+        <td>
+            <input type="text" class="form-control input-sm value-entry" data-value="">
+        </td>
+        <td>
+          <input readonly="readonly" type="text" class="form-control input-sm value-display" data-value="">
+        </td>
+        <td>
+        </td>
+      </tr>
+
+      <tr class="interest-paid-home-improvement">
+        <td class="sub-label">Interest paid on Home Improvement Loan (max 30,000)</td>
+        <td>
+            <input type="text" class="form-control input-sm value-entry" data-value="">
+        </td>
+        <td>
+          <input readonly="readonly" type="text" class="form-control input-sm value-display" data-value="">
+        </td>
+        <td>
+        </td>
+      </tr>
+
+      <tr class="gross-total-income">
+        <td class="head-label">Gross Total Income</td>
+        <td>
+        </td>
+        <td>
+        </td>
+        <td>
+          <input readonly="readonly" type="text" class="form-control input-sm value-final" data-value="">
+        </td>
+      </tr>
+
+      <tr class="less-deduction-under">
+        <td class="head-label">Less: Deduction under Sec 80C (Max Rs.1,50,000/-)</td>
+        <td>
+        </td>
+        <td>
+            <input readonly="readonly" type="text" class="form-control input-sm value-display" data-value="">
+        </td>
+        <td>
+          <input readonly="readonly" type="text" class="form-control input-sm value-final" data-value="">
+        </td>
+      </tr>
+
+      <tr class="a-epf-vpf">
+        <td class="sub-label">A. EPF & VPF Contribution</td>
+        <td>
+          <input type="text" class="form-control input-sm value-entry" data-value="">
+        </td>
+        <td>
+        </td>
+        <td>
+        </td>
+      </tr>
+
+      <tr class="b-public-provident">
+        <td class="sub-label">B. Public Provident Fund (PPF)</td>
+        <td>
+          <input type="text" class="form-control input-sm value-entry" data-value="">
+        </td>
+        <td>
+        </td>
+        <td>
+        </td>
+      </tr>
+
+      <tr class="c-senior-citizen">
+        <td class="sub-label">C. Senior Citizen’s Saving Scheme (SCSS)</td>
+        <td>
+          <input type="text" class="form-control input-sm value-entry" data-value="">
+        </td>
+        <td>
+        </td>
+        <td>
+        </td>
+      </tr>
+
+      <tr class="d-nsc">
+        <td class="sub-label">D. N.S.C (Investment + accrued Interest before Maturity Year)</td>
+        <td>
+          <input type="text" class="form-control input-sm value-entry" data-value="">
+        </td>
+        <td>
+        </td>
+        <td>
+        </td>
+      </tr>
+
+      <tr class="e-tax-savings">
+        <td class="sub-label">E. Tax Saving Fixed Deposit (5 Years and above)</td>
+        <td>
+          <input type="text" class="form-control input-sm value-entry" data-value="">
+        </td>
+        <td>
+        </td>
+        <td>
+        </td>
+      </tr>
+
+      <tr class="f-tax-savings-bond">
+        <td class="sub-label">F. Tax Savings Bonds</td>
+        <td>
+          <input type="text" class="form-control input-sm value-entry" data-value="">
+        </td>
+        <td>
+        </td>
+        <td>
+        </td>
+      </tr>
+
+      <tr class="g-elss">
+        <td class="sub-label">G. E.L.S.S (Tax Saving Mutual Fund)</td>
+        <td>
+          <input type="text" class="form-control input-sm value-entry" data-value="">
+        </td>
+        <td>
+        </td>
+        <td>
+        </td>
+      </tr>
+
+      <tr class="h-life-insurance">
+        <td class="sub-label">H. Life Insurance Premiums</td>
+        <td>
+          <input type="text" class="form-control input-sm value-entry" data-value="">
+        </td>
+        <td>
+        </td>
+        <td>
+        </td>
+      </tr>
+
+      <tr class="i-new-pension">
+        <td class="sub-label">I. New Pension Scheme (NPS) (u/s 80CCC)</td>
+        <td>
+          <input type="text" class="form-control input-sm value-entry" data-value="">
+        </td>
+        <td>
+        </td>
+        <td>
+        </td>
+      </tr>
+
+
+      <tr class="j-pension-plan">
+        <td class="sub-label">J. Pension Plan from Insurance Companies/Mutual Funds (u/s 80CCC)</td>
+        <td>
+          <input type="text" class="form-control input-sm value-entry" data-value="">
+        </td>
+        <td>
+        </td>
+        <td>
+        </td>
+      </tr>
+
+      <tr class="k-ccd-central">
+        <td class="sub-label">K. 80 ccd Central Govt. Employees Pension Plan (u/s 80CCD)</td>
+        <td>
+          <input type="text" class="form-control input-sm value-entry" data-value="">
+        </td>
+        <td>
+        </td>
+        <td>
+        </td>
+      </tr>
+
+      <tr class="l-housing-loan">
+        <td class="sub-label">L. Housing. Loan (Principal Repayment)</td>
+        <td>
+          <input type="text" class="form-control input-sm value-entry" data-value="">
+        </td>
+        <td>
+        </td>
+        <td>
+        </td>
+      </tr>
+
+      <tr class="m-sukaniya">
+        <td class="sub-label">M. Sukanya Samriddhi Account </td>
+        <td>
+          <input type="text" class="form-control input-sm value-entry" data-value="">
+        </td>
+        <td>
+        </td>
+        <td>
+        </td>
+      </tr>
+
+      <tr class="n-stamp-duty">
+        <td class="sub-label">N. Stamp Duty & Registration Charges</td>
+        <td>
+          <input type="text" class="form-control input-sm value-entry" data-value="">
+        </td>
+        <td>
+        </td>
+        <td>
+        </td>
+      </tr>
+
+      <tr class="o-tution-fees">
+        <td class="sub-label">O. Tuition fees for 2 children</td>
+        <td>
+          <input type="text" class="form-control input-sm value-entry" data-value="">
+        </td>
+        <td>
+        </td>
+        <td>
+        </td>
+      </tr>
+
+      <tr class="less-additional-deduction">
+        <td class="head-label">Less: Additional Deduction under Sec 80CCD NPS (Max Rs 50,000/-)</td>
+        <td>
+          <input type="text" class="form-control input-sm value-entry" data-value="">
+        </td>
+        <td>
+        </td>
+        <td>
+          <input readonly="readonly" type="text" class="form-control input-sm value-final" data-value="">
+        </td>
+      </tr>
+
+      <tr class="less-deduction-rgess">
+        <td class="head-label">Less: Deduction under RGESS Sec 80CCG (Max Rs. 50,000/-)</td>
+        <td>
+          <input type="text" class="form-control input-sm value-entry" data-value="">
+        </td>
+        <td>
+        </td>
+        <td>
+          <input readonly="readonly" type="text" class="form-control input-sm value-final" data-value="">
+        </td>
+      </tr>
+
+      <tr class="less-deduction-chapter">
+        <td class="head-label">Less: Deduction under chapter VI A</td>
+        <td>
+        </td>
+        <td>
+        </td>
+        <td>
+          <input readonly="readonly" type="text" class="form-control input-sm value-final" data-value="">
+        </td>
+      </tr>
+
+      <tr class="a-medical-self">
+        <td class="sub-label">A. 80 D Medical Insurance premiums (for Self )</td>
+        <td>
+          <input type="text" class="form-control input-sm value-entry" data-value="">
+        </td>
+        <td>
+          <input readonly="readonly" type="text" class="form-control input-sm value-display" data-value="">
+        </td>
+        <td>
+        </td>
+      </tr>
+
+      <tr class="a-medical-parents">
+        <td class="sub-label">B. 80 D Medical Insurance premiums (for Parents)</td>
+        <td>
+          <input type="text" class="form-control input-sm value-entry" data-value="">
+        </td>
+        <td>
+          <input readonly="readonly" type="text" class="form-control input-sm value-display" data-value="">
+        </td>
+        <td>
+        </td>
+      </tr>
+
+      <tr class="c-paid-on-education">
+        <td class="sub-label">C. 80 E Int Paid on Education Loan</td>
+        <td>
+          <input type="text" class="form-control input-sm value-entry" data-value="">
+        </td>
+        <td>
+          <input readonly="readonly" type="text" class="form-control input-sm value-display" data-value="">
+        </td>
+        <td>
+        </td>
+      </tr>
+
+      <tr class="d-medical-treatment">
+        <td class="sub-label">D. 80 DD Medical Treatment of handicapped Dependent</td>
+        <td>
+          <input type="text" class="form-control input-sm value-entry" data-value="">
+        </td>
+        <td>
+          <input readonly="readonly" type="text" class="form-control input-sm value-display" data-value="">
+        </td>
+        <td>
+        </td>
+      </tr>
+
+      <tr class="e-expenditure-treatment">
+        <td class="sub-label">E. 80DDB Expenditure on Selected Medical Treatment for self/ dependent</td>
+        <td>
+          <input type="text" class="form-control input-sm value-entry" data-value="">
+        </td>
+        <td>
+          <input readonly="readonly" type="text" class="form-control input-sm value-display" data-value="">
+        </td>
+        <td>
+        </td>
+      </tr>
+
+      <tr class="f-donation-approve-funds">
+        <td class="sub-label">F. 80G, 80GGA, 80GGC Donation to approved funds</td>
+        <td>
+          <input type="text" class="form-control input-sm value-entry" data-value="">
+        </td>
+        <td>
+          <input readonly="readonly" type="text" class="form-control input-sm value-display" data-value="">
+        </td>
+        <td>
+        </td>
+      </tr>
+
+      <tr class="g-rent-case">
+        <td class="sub-label">G. 80GG For Rent in case of no HRA Component</td>
+        <td>
+          <input type="text" class="form-control input-sm value-entry" data-value="">
+        </td>
+        <td>
+          <input readonly="readonly" type="text" class="form-control input-sm value-display" data-value="">
+        </td>
+        <td>
+        </td>
+      </tr>
+
+      <tr class="h-physically-disable">
+        <td class="sub-label">H. 80U For Physically Disable Assesse</td>
+        <td>
+          <input type="text" class="form-control input-sm value-entry" data-value="">
+        </td>
+        <td>
+          <input readonly="readonly" type="text" class="form-control input-sm value-display" data-value="">
+        </td>
+        <td>
+        </td>
+      </tr>
+
+      <tr class="i-any-other">
+        <td class="sub-label">I. Any other</td>
+        <td>
+          <input type="text" class="form-control input-sm value-entry" data-value="">
+        </td>
+        <td>
+          <input readonly="readonly" type="text" class="form-control input-sm value-display" data-value="">
+        </td>
+        <td>
+        </td>
+      </tr>
+
+      <tr class="total-income">
+        <td class="head-label">Total Income</td>
+        <td>
+        </td>
+        <td>
+        </td>
+        <td>
+          <input readonly="readonly" type="text" class="form-control input-sm value-final" data-value="">
+        </td>
+      </tr>
+
+      <tr class="tax-rebate">
+        <td class="head-label">Tax Rebate of Rs. 2,000 (For Income of less than 5 lakhs)</td>
+        <td>
+        </td>
+        <td>
+        </td>
+        <td>
+          <input readonly="readonly" type="text" class="form-control input-sm value-final" data-value="">
+        </td>
+      </tr>
+
+      <tr class="total-tax-payable">
+        <td class="head-label">Total Tax Payable</td>
+        <td>
+        </td>
+        <td>
+        </td>
+        <td>
+          <input readonly="readonly" type="text" class="form-control input-sm value-final" data-value="">
+        </td>
+      </tr>
+
+      <tr class="tax-surcharge-more-core">
+        <td class="head-label">Tax Surcharge @ 10% (For Income of more than 1 Crore)</td>
+        <td>
+        </td>
+        <td>
+        </td>
+        <td>
+          <input readonly="readonly" type="text" class="form-control input-sm value-final" data-value="">
+        </td>
+      </tr>
+
+      <tr class="add-edn-ces">
+        <td class="head-label">Add; Edn Cess @ 3%</td>
+        <td>
+        </td>
+        <td>
+        </td>
+        <td>
+          <input readonly="readonly" type="text" class="form-control input-sm value-final" data-value="">
+        </td>
+      </tr>
+
+      <tr class="net-tax-payable">
+        <td class="head-label"><h2>Net Tax Payable</h2></td>
+        <td>
+        </td>
+        <td>
+        </td>
+        <td>
+          <span class="value-final" data-value=""></span>
+        </td>
+      </tr>
+
+      <tr class="tax-to-income-ratio">
+        <td class="head-label"><h3>Tax to Total Income Ratio</h3></td>
+        <td>
+        </td>
+        <td>
+        </td>
+        <td>
+          <span class="value-final" data-value=""></span>
+        </td>
+      </tr>
+      <tr>
+      <td align="right" colspan="4">
+              <button onclick="window.print();" class="btn btn-primary print-hide">Take a print &nbsp; <span class="glyphicon glyphicon-print" aria-hidden="true"></span></button>
+              <small class="print-display">Developed by : Cyber Info Scripter.Inc, 2015 . All Rights Reserved </small>
+      </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+ <script type="text/javascript">
+            $(document).ready(function(){
+
+            	$("#datepicker").datepicker();
+
+            });
+ </script>
+
+</body>
+</html>
